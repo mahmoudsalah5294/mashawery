@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/nav_upcomming">
+
+    <fragment
+        android:id="@+id/nav_sync"
+        android:name="com.mnm.mashawery.ui.sync.SyncFragment"
+        android:label="@string/menu_sync"
+        tools:layout="@layout/fragment_sync" />
+
+    <fragment
+        android:id="@+id/nav_upcomming"
+        android:name="com.mnm.mashawery.ui.upcomming.UpcomingFragment"
+        android:label="@string/menu_upcomming"
+        tools:layout="@layout/fragment_upcomming" />
+
+    <fragment
+        android:id="@+id/nav_history"
+        android:name="com.mnm.mashawery.ui.history.HistoryFragment"
+        android:label="@string/menu_history"
+        tools:layout="@layout/fragment_history" />
+
+    <fragment
+        android:id="@+id/nav_logout"
+        android:name="com.mnm.mashawery.ui.logout.LogoutFragment"
+        android:label="@string/menu_logout"
+        tools:layout="@layout/fragment_logout" />
+</navigation>
