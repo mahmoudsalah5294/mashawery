@@ -68,8 +68,8 @@ public class UpcomingFragment extends Fragment  {
                     public void onSuccess(@io.reactivex.annotations.NonNull List<Trip> trips) {
                         for(Trip t: trips){
                             Log.i("Adapter", "onSuccess: "+t.getName()+" "+t.getStartpoint()+ " "+t.getEndpoint()+" "+t.getRepeatation()+" "+t.getTriptime()+" "+t.getWay()+" "+t.getTripdate());
-                          //  if(t.getState().equals("history"))
-                           //     trips.remove(t);
+                            if(t.getState().equals("history"))
+                                trips.remove(t);
                         }
                         adapter = new Adapter(trips,getContext(),getActivity());
                         recyclerView = (RecyclerView) root.findViewById(R.id.thelist);
@@ -82,6 +82,7 @@ public class UpcomingFragment extends Fragment  {
                         Log.i("UPCOMING", "onError: ");
                     }
                 });
+
         return root;
     }
 

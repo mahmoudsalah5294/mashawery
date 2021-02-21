@@ -1,7 +1,6 @@
-package com.mnm.mashawery;
+package com.mnm.mashawery.ui.history;
 
 import android.content.Context;
-import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,7 +15,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.mnm.mashawery.ui.history.HistoryFragment;
+import com.mnm.mashawery.R;
+import com.mnm.mashawery.Trip;
+import com.mnm.mashawery.TripDataBase;
 
 import java.util.List;
 

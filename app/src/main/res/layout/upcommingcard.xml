@@ -19,9 +19,10 @@
             android:id="@+id/date"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_marginStart="5dp"
-            android:layout_marginEnd="158dp"
-            android:layout_marginBottom="12dp"
+            android:layout_marginStart="29dp"
+            android:layout_marginTop="2dp"
+            android:layout_marginEnd="4dp"
+            android:layout_marginBottom="6dp"
             android:text="TextView"
             android:textSize="24sp"
             app:layout_constraintBottom_toTopOf="@+id/name"
@@ -51,7 +52,7 @@
             android:textSize="24sp"
             app:layout_constraintBottom_toTopOf="@+id/from"
             app:layout_constraintEnd_toEndOf="@+id/from"
-            app:layout_constraintStart_toStartOf="@+id/from"
+            app:layout_constraintStart_toStartOf="@+id/date"
             app:layout_constraintTop_toBottomOf="@+id/date" />
 
         <TextView
@@ -93,14 +94,14 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/Editbutton"
             app:layout_constraintStart_toEndOf="@+id/DeleteButton"
-            app:layout_constraintTop_toBottomOf="@+id/imageView6" />
+            app:layout_constraintTop_toBottomOf="@+id/imageView4" />
 
         <ImageView
             android:id="@+id/imageView4"
             android:layout_width="35dp"
             android:layout_height="0dp"
             android:layout_marginBottom="63dp"
-            app:layout_constraintBottom_toTopOf="@+id/DeleteButton"
+            app:layout_constraintBottom_toTopOf="@+id/Startbutton"
             app:layout_constraintStart_toStartOf="@+id/from2"
             app:layout_constraintTop_toBottomOf="@+id/from"
             app:srcCompat="@drawable/ic_baseline_arrow_downward_24" />
@@ -109,14 +110,13 @@
             android:id="@+id/imageView6"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_marginTop="197dp"
             android:layout_marginEnd="14dp"
             android:layout_marginBottom="14dp"
             android:contentDescription="notes"
-            app:layout_constraintBottom_toTopOf="@+id/Startbutton"
+            app:layout_constraintBottom_toTopOf="@+id/Editbutton"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/from2"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/time"
             app:srcCompat="@drawable/ic_baseline_sticky_note_2_24" />
 
         <Button
@@ -129,8 +129,7 @@
             android:text="Delete"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/Startbutton"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageView4" />
+            app:layout_constraintStart_toStartOf="parent" />
 
         <Button
             android:id="@+id/Editbutton"
@@ -142,8 +141,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/Startbutton"
-            app:layout_constraintTop_toBottomOf="@+id/imageView6"
-            app:layout_constraintVertical_bias="1.0" />
+            app:layout_constraintTop_toBottomOf="@+id/imageView6" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -35,7 +35,8 @@ public class AddTrip extends AppCompatActivity {
     String thedate;
     String thetime;
     Button add;
-
+    Button cancel;
+    boolean Roundtrip=false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,6 +47,7 @@ public class AddTrip extends AppCompatActivity {
         repeated = (Spinner) findViewById(R.id.repeatedSpinner);
         way = (Spinner) findViewById(R.id.tripSpinner);
         add = (Button) findViewById(R.id.button);
+        cancel=(Button)findViewById(R.id.button2);
         Calendar calendar = Calendar.getInstance();
         int year = calendar.get(Calendar.YEAR);
         int month = calendar.get(Calendar.MONTH);
@@ -76,9 +78,10 @@ public class AddTrip extends AppCompatActivity {
             public void onClick(View v) {
                 String theRepeatation=repeated.getSelectedItem().toString()+","+String.valueOf(repeated.getSelectedItemPosition());
                 String theway=way.getSelectedItem().toString()+","+String.valueOf(way.getSelectedItemPosition());
-                Log.i("Repeateeeeeeed", "onCreate: "+theRepeatation);
+                if(way.getSelectedItem().toString().equals("Round Trip"))
+                    Roundtrip=true;
                 tripDataBase.tripDAO()
-                        .insertTrip(new Trip(tripname.getText().toString(), frompoint.getText().toString(), topoint.getText().toString(), DialogPicker.date, DialogPicker.time, theRepeatation, theway, "history"))
+                        .insertTrip(new Trip(tripname.getText().toString(), frompoint.getText().toString(), topoint.getText().toString(), DialogPicker.date, DialogPicker.time, theRepeatation, theway, "upcoming"))
                         .subscribeOn(Schedulers.computation())
                         .subscribe(new CompletableObserver() {
                             @Override
@@ -97,13 +100,41 @@ public class AddTrip extends AppCompatActivity {
 
                             }
                         });
+                if (Roundtrip){
+                    Roundtrip=false;
+                    tripDataBase.tripDAO()
+                            .insertTrip(new Trip(tripname.getText().toString()+"BacK", topoint.getText().toString(), frompoint.getText().toString(), DialogPicker.date, DialogPicker.time, theRepeatation, theway, "upcoming"))
+                            .subscribeOn(Schedulers.computation())
+                            .subscribe(new CompletableObserver() {
+                                @Override
+                                public void onSubscribe(@NonNull Disposable d) {
+                                    Toast.makeText(context, "Done", Toast.LENGTH_SHORT).show();
+
+                                }
+
+                                @Override
+                                public void onComplete() {
+
+                                }
+
+                                @Override
+                                public void onError(@NonNull Throwable e) {
+
+                                }
+                            });
+                }
                 Intent intent=new Intent(AddTrip.this,MainActivity.class);
                 startActivity(intent);
             }
 
         });
-
-
+        cancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(context,MainActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
 

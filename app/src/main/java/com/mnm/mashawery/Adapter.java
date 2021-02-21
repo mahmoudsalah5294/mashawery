@@ -116,6 +116,12 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
                         });
             }
         });
+        holder.notes.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
     }
 
     @Override
@@ -133,7 +139,7 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
         public Button delete;
         public Button edit;
         public ImageView image4;
-        public ImageView image6;
+        public ImageView notes;
         public View layout;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -147,7 +153,7 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
             delete = itemView.findViewById(R.id.DeleteButton);
             edit = itemView.findViewById(R.id.Editbutton);
             image4 = itemView.findViewById(R.id.imageView4);
-            image6 = itemView.findViewById(R.id.imageView6);
+            notes = itemView.findViewById(R.id.imageView6);
         }
     }
 }
