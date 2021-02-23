@@ -1,4 +1,4 @@
-package com.mnm.mashawery;
+package com.mnm.mashawery.adapters;
 
 import android.app.Activity;
 import android.content.Context;
@@ -15,11 +15,14 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.mnm.mashawery.ui.upcomming.UpcomingFragment;
+import com.mnm.mashawery.EditFragment;
+import com.mnm.mashawery.MainActivity;
+import com.mnm.mashawery.NoteActivity;
+import com.mnm.mashawery.R;
+import com.mnm.mashawery.Trip;
+import com.mnm.mashawery.TripDataBase;
 
 import java.util.List;
 
@@ -35,7 +38,6 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
     Context context;
     Activity activity;
     final TripDataBase tripDataBase = TripDataBase.getInstance(context);
-
     @NonNull
     @Override
     public Adapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -71,7 +73,7 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
                             @Override
                             public void onSubscribe(@io.reactivex.annotations.NonNull Disposable d) {
                                 Toast.makeText(context, "Deleted", Toast.LENGTH_SHORT).show();
-                                Intent intent=new Intent(context,MainActivity.class);
+                                Intent intent=new Intent(context, MainActivity.class);
                                context.startActivity(intent);
                             }
 
@@ -119,7 +121,9 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
         holder.notes.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent intent=new Intent(context, NoteActivity.class);
+                intent.putExtra("Tripname",values.get(position).getName());
+                context.startActivity(intent);
             }
         });
     }
@@ -129,7 +133,7 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
         return values.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
+    public static class ViewHolder extends RecyclerView.ViewHolder {
         public TextView time;
         public TextView name;
         public TextView date;
@@ -156,4 +160,6 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
             notes = itemView.findViewById(R.id.imageView6);
         }
     }
+
+
 }

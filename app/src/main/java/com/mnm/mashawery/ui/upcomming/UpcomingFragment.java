@@ -16,7 +16,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.mnm.mashawery.Adapter;
+import com.mnm.mashawery.adapters.Adapter;
 import com.mnm.mashawery.AddTrip;
 import com.mnm.mashawery.R;
 import com.mnm.mashawery.Trip;

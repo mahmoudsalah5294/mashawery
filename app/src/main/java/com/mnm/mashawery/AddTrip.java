@@ -1,14 +1,12 @@
 package com.mnm.mashawery;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 
+import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
@@ -16,7 +14,8 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.Toast;
-import com.mnm.mashawery.ui.upcomming.UpcomingFragment;
+
+import java.util.ArrayList;
 import java.util.Calendar;
 import io.reactivex.CompletableObserver;
 import io.reactivex.annotations.NonNull;
@@ -81,12 +80,11 @@ public class AddTrip extends AppCompatActivity {
                 if(way.getSelectedItem().toString().equals("Round Trip"))
                     Roundtrip=true;
                 tripDataBase.tripDAO()
-                        .insertTrip(new Trip(tripname.getText().toString(), frompoint.getText().toString(), topoint.getText().toString(), DialogPicker.date, DialogPicker.time, theRepeatation, theway, "upcoming"))
+                        .insertTrip(new Trip(tripname.getText().toString(), frompoint.getText().toString(), topoint.getText().toString(), DialogPicker.date, DialogPicker.time, theRepeatation, theway, "upcoming",new ArrayList<>()))
                         .subscribeOn(Schedulers.computation())
                         .subscribe(new CompletableObserver() {
                             @Override
                             public void onSubscribe(@NonNull Disposable d) {
-                                Toast.makeText(context, "Done", Toast.LENGTH_SHORT).show();
 
                             }
 
@@ -103,7 +101,7 @@ public class AddTrip extends AppCompatActivity {
                 if (Roundtrip){
                     Roundtrip=false;
                     tripDataBase.tripDAO()
-                            .insertTrip(new Trip(tripname.getText().toString()+"BacK", topoint.getText().toString(), frompoint.getText().toString(), DialogPicker.date, DialogPicker.time, theRepeatation, theway, "upcoming"))
+                            .insertTrip(new Trip(tripname.getText().toString()+"BacK", topoint.getText().toString(), frompoint.getText().toString(), DialogPicker.date, DialogPicker.time, theRepeatation, theway, "upcoming",new ArrayList<>()))
                             .subscribeOn(Schedulers.computation())
                             .subscribe(new CompletableObserver() {
                                 @Override
@@ -135,7 +133,13 @@ public class AddTrip extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
     }
 
-
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        Intent intent=new Intent(context,MainActivity.class);
+        startActivity(intent);
+    }
 }
